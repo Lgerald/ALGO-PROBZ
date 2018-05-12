@@ -33,7 +33,7 @@ function twoNumberSum(array, targetSum) {
     let left = 0
     let right = array.length - 1
     // while the pointers havent crossed each other
-    while (left < right ) {
+    while (left < right) {
         // add together values at pointers
         const currentSum = array[left] + array[right]
         // if our current sum matches the target we have a winner

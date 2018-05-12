@@ -39,7 +39,7 @@ function getShortestUniqueSubstring(arr, str) {
     return str.substring(headIndex, tailIndex)
     }
 
-    if (result == "" OR tempLength < result.length) {
+    if (result == "" || tempLength < result.length) {
     // return a substring of str from
     // headIndex to tailIndex(inclusive)
     result = str.substring(headIndex, tailIndex)
