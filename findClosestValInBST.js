@@ -43,7 +43,7 @@ function findClosestValueInBstHelper(tree, target, closest) {
     while (currentNode !== null) {
         // compare the abs value of the closest and current value versus the target, if the current node value is closer to zero, reassing the closest to the current node value
         if (Math.abs(target - closest) > Math.abs(target - currentNode.value)) {
-            cloest = currentNode.value
+            closest = currentNode.value
         }
         //if the current node is bigger than the target go left
         if (target < currentNode.value) {

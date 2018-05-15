@@ -32,49 +32,36 @@ output: {
             "Key2.c.e" : "1"
         }
 Important: when you concatenate keys, make sure to add the dot character between them. For instance concatenating Key2, c and d the result key would be Key2.c.d.
+Time Complexity: O(N), where N is the number of keys in the input dictionary. We visit every key in dictionary only once, hence the linear time complexity.
+
+Space Complexity: O(N) since the output dictionary is asymptotically as big as the input dictionary. We also store recursive calls in the execution stack which in the worst case scenario could be O(N), as well. The total is still O(N).
+
 */
 
-// my first attempt:
 function flattenDictionary(dict) {
-  // your code goes here
-  const result = {}
-  for (key in dict) {
-    if (typeof dict[key] === 'object') {
-
-      key = key + '.' + flattenDictionary(dict[key])
-    } else {
-      key = key
-
-    }
-    result[key] = dict[key]
-  }
-  return result
-}
-
-
-//proper solution
-// time: O(n)
-function flattenDictionary(dict) {
-  // your code goes here
-  const result = {}
-  helper('', dict, result)
-  return result
+	// your code goes here
+	const result = {}
+	helper('', dict, result)
+	return result
 }
 
 function helper(intialKey, dict, flatDict) {
-  for (k in dict) {
-    console.log(k)
-    let value = dict[k]
-    if (typeof value !== 'object') {
-      if (intialKey === null || intialKey === '') {
-        flatDict[k] = value
-      } else {
-        flatDict[intialKey + '.' + k] = value
-      }
-    } else if (intialKey === null || intialKey === '') {
-        helper(k, value, flatDict)
-      } else {
-        helper((intialKey + '.' + k), value, flatDict)
-      }
-  }
+	for (k in dict) {
+		let value = dict[k]
+		if (typeof value !== 'object') {
+			if (intialKey === null || intialKey === '') {
+				flatDict[k] = value
+			} else {
+				if (k === '') flatDict[intialKey] = value
+				else flatDict[intialKey + '.' + k] = value
+			}
+		} else {
+			if (intialKey === null || intialKey === '') {
+				helper(k, value, flatDict)
+			} else {
+				helper(intialKey + '.' + k, value, flatDict)
+			}
+		}
+	}
 }
+
