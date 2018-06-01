@@ -40,3 +40,68 @@ function helper(array, target, left, right) {
 
 }
 
+//general binary search (interview cate)
+
+function binarySearch(target, nums) {
+    // see if target appears in nums
+    // floor + cieling index - walls around
+    // we start our wall one to the left of the 0th index
+    let floorIndex = -1
+    let ceilIndex = nums.length
+    // if there isnt at least 2 indx between floor and cieling
+    // weve run out of guesses and the number isnt there
+    while (floorIndex + 1 < ceilIndex) {
+        // find the midpoint (halfway between floor and ciel)
+        // we must round down to avoid half indexwes
+        let distance = ceilIndex - floorIndex
+        let midpoint = Math.floor(distance / 2)
+        // start guessing at the point between the midpoint, and the floor index
+        let guessIndex = floorIndex + midpoint
+        // isolate the value where looking to compare w/ our target
+        let guessValue = nums[guessIndex]
+        if (guessValue === target) {
+            return true
+        }
+        if (guessValue > target) {
+            // the target is to the left, so move the ceiling to the left
+            ceilIndex = guessIndex
+        } else {
+            // otherwise, the target is to the right, so move the floor to the right
+            floorIndex = guessIndex
+        }
+    }
+    return false
+}
+
+
+// countingSort
+
+function countingSort(theArray, maxValue) {
+    // array of 0 set at indices 0 to max value
+    let numCounts = []
+    for (var i = 0; i < maxValue + 1; i++) {
+        numCounts[i] = 0
+    }
+
+    //populate numCounts (each index in num counts holds the number of times that number appeared)
+    theArray.forEach(num => {
+        numCounts[num] += 1
+    })
+
+    //populate the final sorted array
+    let sortedArray = []
+    let currentIndex = 0
+
+    //for Each num in numCounts
+    for (let num = 0; num < numCounts.length; nums++) {
+        let counts = numCouns[num]
+
+        //for the number of times the item occurs
+        for (let i = 0; i < count; i++) {
+            sortedArray[currentIndex] = num
+            currentIndex++
+        }
+    }
+    return sortedArray
+}
+

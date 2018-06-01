@@ -45,7 +45,7 @@ function recursiveCombinatorialCoinChange(target, denoms, memo = {}) {
     if (target === 0) return 0
 		if (target < 0) return Infinity
 		let runningMin = Infinity
-		for (let i = 0; i <= denoms.length; i++) {
+		for (let i = 0; i < denoms.length; i++) {
 			let coin = denoms[i]
 			let subTarget = target - coin
 			//yields possible minimum
@@ -54,8 +54,7 @@ function recursiveCombinatorialCoinChange(target, denoms, memo = {}) {
         }
         memo[target] = runningMin
 		return runningMin
-    
-    //another approach
+
     // if (target === 0) return 0
     // if (target < 0) return Infinity
     // let possibleMinima = []
@@ -69,3 +68,26 @@ function recursiveCombinatorialCoinChange(target, denoms, memo = {}) {
     // return Math.min.apply(null, possibleMinima)
 }
 
+// algo expert style (using an array, and in place finding number of coins)
+function minNumberOfCounsForChange(n, demons) {
+    // make a new array of length n+1 fulled with infinity
+    // initialize that array[0] = 0 (b/c for zero dollars, there are only zero ways to make change)
+    // for our denoms
+        // for amount 0; while amount is less than num of coins length, increment
+        // if the denom is less than or equal to the amount
+            // reassign num of coins[amount] = min of num of coins amount OR num of coins[amount - denom] + 1
+            // ** -> that means the value of the amount before (From adding up the num curr denom num of coins away + 1)
+            // b/c we are adding one of the new denom to that old one to recalculate a new min
+    // after all the looping, return the value at numofcoins[n] --> should be the min amount of coins to make change at thatvalue
+    // otherwise, use a ternary and return -1
+    const numOfCoins = (new Array(n + 1)).fill(Infinity)
+    numOfCoins[0] = 0
+    for (const denom of denoms) {
+        for (let amount = 0; amount < numOfCoins.length; amount++) {
+            if (denom <= amount) {
+                numOfCoins[amount] = Math.min(numOfCoins[amount], 1 + numOfCoins[amount - denom])
+            }
+        }
+    }
+    return numOfCoins[n] === Infinity ? -1 : numOfCoins[n]
+}

@@ -51,17 +51,13 @@ function helper(intialKey, dict, flatDict) {
 		if (typeof value !== 'object') {
 			if (intialKey === null || intialKey === '') {
 				flatDict[k] = value
-			} else {
-				if (k === '') flatDict[intialKey] = value
-				else flatDict[intialKey + '.' + k] = value
-			}
-		} else {
-			if (intialKey === null || intialKey === '') {
+			} else if (k === '') {flatDict[intialKey] = value}
+				else {flatDict[intialKey + '.' + k] = value}
+		} else if (intialKey === null || intialKey === '') {
 				helper(k, value, flatDict)
 			} else {
 				helper(intialKey + '.' + k, value, flatDict)
 			}
-		}
 	}
 }
 

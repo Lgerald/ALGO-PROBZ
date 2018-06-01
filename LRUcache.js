@@ -1,7 +1,5 @@
 /*QUESTION: implement a class for a least recently used cache. the cache should support inserting key/value pairs, retreiving a keys value, and retreiving the most recently "active" key. each of these methods should run in constant time. when a key/value pair is inserted or a keys value is retreived, the key in question should become the most resent key. also, the lru cache class should store a max size property set to the size of the cache, which is passed in as an argumentnt during instantiations. the size represents the maximum number of key/value pairs that the cach can hold at once. if a key/valye pair is added to the cache when it has reached maximum capacity, the least recently used "active" key/value pair should effectively replace it. inserting a key valye pair with an already existing key should simply replace the keys value in the cache with the new value and should not evict a key/value pair if the cache is full. attempting to retreive a value from a key that is not in the cahce should return the null value */
 
-
-
 // cache class
 class LRUCache {
     constructor(maxSize) {

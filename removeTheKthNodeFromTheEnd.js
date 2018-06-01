@@ -1,7 +1,6 @@
 function removeKthNodeFromEnd(head, k) {
-    // Write your code here.
     // make two pointers, first and second, and a counter
-    //traverse the ll until kth node
+    // traverse the ll until kth node
     // then traverse to the end moving both the kth node, and the first
     // once first reaches the tail (null valuue), whenever second is, reassign the pointers to remove this one
     let first = head
@@ -23,7 +22,4 @@ function removeKthNodeFromEnd(head, k) {
         second = second.next
     }
     second.next = second.next.next
-
-
-
 }

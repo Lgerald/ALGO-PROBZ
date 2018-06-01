@@ -24,7 +24,7 @@ function getNewLetter(letter, key) {
     // new letter code needs to be update via the mod of the key
     const newLetterCode = letter.charCodeAt() + key
     // we're never going to be below 97, so we only have to worry about the upper bounds
-    // it we get a new code thats bigger than the max, mod that num by 122 --> get the remainder, and add it to 96 (the thing that comes right before a -> aka the zero of the unicode alphabet)
+    // it we get a new code thats bigger than the max, mod that num by 122 --> get the remainder, and add it to 96 (the thing that comes right before a -> aka the zero of the unicode alphabet) eg if we have 123 -> that should go to a, 123 % 122 = 1 + 96 = 97 = a
     return newLetterCode <= 122 ? String.fromCharCode(newLetterCode) : String.fromCharCode(96 + newLetterCode % 122)
 }
 
