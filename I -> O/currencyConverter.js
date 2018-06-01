@@ -20,4 +20,4 @@ function converter(num) {
 
 }
 
-converter(10000000000023423414) // 10.000
+converter(10000000000023423414) // 10,000

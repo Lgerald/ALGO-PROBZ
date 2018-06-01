@@ -4,12 +4,7 @@ const doesPathExist = (graph, start, target, visited = {}) => {
     if (!graph[start]) return false
     // otherwise, store this value in the visited obj as true
     visited[start] = true;
-    const graph = {
-        a: ['a', 'c'],
-        c: ['r', 's'],
-        r: ['a'],
-        s: []
-    }
+
     // some should traverse the vertices in our graph
     //The some() method tests whether at least one element in the array passes the test implemented by the provided function.
     // for each value in the graph, test if theres some value that matches what we want, and THAT one should return true eventually
@@ -26,4 +21,12 @@ const doesPathExist = (graph, start, target, visited = {}) => {
             return false;
         }
     });
+}
+
+// what does our graph look like? well this:
+const graph = {
+    a: ['a', 'c'],
+    c: ['r', 's'],
+    r: ['a'],
+    s: []
 }
